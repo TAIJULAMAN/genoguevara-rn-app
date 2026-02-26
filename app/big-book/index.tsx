@@ -1,5 +1,6 @@
 import {
     Platform,
+    ScrollView,
     StyleSheet,
     Text,
     TouchableOpacity,
@@ -8,7 +9,7 @@ import {
 import { SafeAreaView } from 'react-native';
 import { useRouter } from 'expo-router';
 
-export default function BigBookThumperScreen() {
+export default function MorningPrayerScreen() {
     const router = useRouter();
 
     const Container = Platform.OS === 'web' ? View : SafeAreaView;
@@ -24,26 +25,57 @@ export default function BigBookThumperScreen() {
                 >
                     <Text style={styles.backArrow}>‹</Text>
                 </TouchableOpacity>
-                <Text style={styles.title}>Big Book Thumper</Text>
+                <Text style={styles.headerTitle}>Morning Prayer</Text>
                 <View style={styles.placeholder} />
             </View>
 
-            <View style={styles.content}>
-                <Text style={styles.subtitle}>Page 86–88</Text>
-                <Text style={styles.description}>
-                    "Line by line exactly like the big book. A guided meditation through the spiritual instructions of Alcoholics Anonymous."
-                </Text>
+            <ScrollView
+                style={styles.scrollView}
+                contentContainerStyle={styles.scrollContent}
+                showsVerticalScrollIndicator={false}
+            >
+                {/* Section Title */}
+                <View style={styles.titleSection}>
+                    <Text style={styles.sectionTitle}>“Upon Awakening”</Text>
+                    <View style={styles.yellowBar} />
+                </View>
 
-                <View style={styles.verseCard}>
-                    <Text style={styles.verseText}>
-                        "On awakening let us think about the twenty-four hours ahead. We consider our plans for the day. Before we begin, we ask God to direct our thinking, especially asking that it be divorced from self-pity, dishonest or self-seeking motives."
+                {/* Quote Card */}
+                <View style={styles.quoteCard}>
+                    <Text style={styles.quoteText}>
+                        “On awakening let us think about the{'\n'}
+                        twenty-four hours ahead...{'\n'}
+                        Before we begin, we ask God to direct{'\n'}
+                        our thinking...”
                     </Text>
                 </View>
 
-                <TouchableOpacity style={styles.beginButton} activeOpacity={0.8}>
-                    <Text style={styles.beginText}>Start Reading</Text>
-                </TouchableOpacity>
-            </View>
+                {/* Instructions */}
+                <View style={styles.instructionsSection}>
+                    <Text style={styles.instructionsLabel}>INSTRUCTIONS:</Text>
+                    <Text style={styles.instructionsText}>
+                        Pause before launching into the day. Ask God to guide your thinking — especially that it be free from fear, self-pity, or selfish motives.
+                    </Text>
+                </View>
+
+                {/* Prayer Block */}
+                <View style={styles.prayerBlock}>
+                    <Text style={styles.prayerText}>
+                        God, direct my thinking _ especially that it be divorced from self- pity dishonest or self- seeking motives
+                    </Text>
+                </View>
+
+                {/* Button */}
+                <View style={styles.buttonPadding}>
+                    <TouchableOpacity
+                        style={styles.beginButton}
+                        activeOpacity={0.8}
+                        onPress={() => router.push('/meditation')}
+                    >
+                        <Text style={styles.beginButtonText}>Begin Timer</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </Container>
     );
 }
@@ -51,7 +83,7 @@ export default function BigBookThumperScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1a1a1e',
+        backgroundColor: '#000000',
         paddingTop: Platform.OS === 'web' ? 16 : 0,
     },
     header: {
@@ -63,74 +95,106 @@ const styles = StyleSheet.create({
         paddingBottom: 16,
     },
     backButton: {
-        width: 36,
-        height: 36,
-        borderRadius: 18,
-        backgroundColor: '#2a2a2e',
+        width: 44,
+        height: 44,
+        borderRadius: 22,
+        backgroundColor: '#1c1c1e',
         alignItems: 'center',
         justifyContent: 'center',
     },
     backArrow: {
         fontFamily: 'Inter_400Regular',
-        fontSize: 24,
+        fontSize: 32,
         color: '#ffffff',
-        marginTop: -2,
+        marginTop: -4,
     },
-    title: {
-        fontFamily: 'Inter_700Bold',
-        fontSize: 20,
+    headerTitle: {
+        fontFamily: 'Inter_500Medium',
+        fontSize: 18,
         color: '#ffffff',
     },
     placeholder: {
-        width: 36,
+        width: 44,
     },
-    content: {
+    scrollView: {
         flex: 1,
+    },
+    scrollContent: {
+        paddingBottom: 40,
+    },
+    titleSection: {
         paddingHorizontal: 24,
-        paddingTop: 40,
-        alignItems: 'center',
+        marginTop: 20,
+        marginBottom: 24,
     },
-    subtitle: {
-        fontFamily: 'Inter_800ExtraBold',
-        fontSize: 32,
+    sectionTitle: {
+        fontFamily: 'Inter_400Regular',
+        fontSize: 22,
         color: '#ffffff',
-        marginBottom: 16,
-        textAlign: 'center',
+        marginBottom: 12,
     },
-    description: {
+    yellowBar: {
+        height: 3,
+        backgroundColor: '#FFD54F',
+        width: '100%',
+    },
+    quoteCard: {
+        backgroundColor: '#2c2514',
+        marginHorizontal: 24,
+        borderRadius: 16,
+        padding: 24,
+        marginBottom: 32,
+    },
+    quoteText: {
         fontFamily: 'Inter_400Regular',
         fontSize: 16,
-        color: '#999999',
+        color: '#d1b88a',
         textAlign: 'center',
-        lineHeight: 24,
-        marginBottom: 48,
-    },
-    verseCard: {
-        backgroundColor: '#2a2a2e',
-        padding: 24,
-        borderRadius: 20,
-        width: '100%',
-        marginBottom: 60,
-        borderLeftWidth: 4,
-        borderLeftColor: '#94CDFA',
-    },
-    verseText: {
-        fontFamily: 'Inter_400Regular',
-        fontSize: 17,
-        color: '#ffffff',
         lineHeight: 28,
-        fontStyle: 'italic',
+    },
+    instructionsSection: {
+        paddingHorizontal: 24,
+        marginBottom: 32,
+    },
+    instructionsLabel: {
+        fontFamily: 'Inter_700Bold',
+        fontSize: 12,
+        color: '#999999',
+        letterSpacing: 1.2,
+        marginBottom: 12,
+    },
+    instructionsText: {
+        fontFamily: 'Inter_400Regular',
+        fontSize: 16,
+        color: '#ffffff',
+        lineHeight: 24,
+    },
+    prayerBlock: {
+        backgroundColor: '#3a3116',
+        paddingVertical: 50,
+        paddingHorizontal: 24,
+        width: '100%',
+        marginBottom: 40,
+    },
+    prayerText: {
+        fontFamily: 'Inter_400Regular',
+        fontSize: 28,
+        color: '#ffffff',
+        lineHeight: 42,
+        textAlign: 'left',
+    },
+    buttonPadding: {
+        paddingHorizontal: 24,
     },
     beginButton: {
-        backgroundColor: '#94CDFA',
-        width: '100%',
+        backgroundColor: '#FFD54F',
         paddingVertical: 18,
-        borderRadius: 16,
+        borderRadius: 30,
         alignItems: 'center',
     },
-    beginText: {
+    beginButtonText: {
         fontFamily: 'Inter_700Bold',
         fontSize: 18,
-        color: '#1a1a1a',
+        color: '#000000',
     },
 });
