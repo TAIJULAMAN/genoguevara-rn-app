@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
     Platform,
     ScrollView,
@@ -9,12 +9,21 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import { useRouter } from 'expo-router';
-
-type PathOption = 'dr_bob' | 'big_book';
+import { useAppContext, PathOption } from '../../context/AppContext';
 
 export default function SettingsScreen() {
     const router = useRouter();
-    const [selectedPath, setSelectedPath] = useState<PathOption>('big_book');
+    const { selectedPath, setSelectedPath } = useAppContext();
+    const [localPath, setLocalPath] = useState<PathOption>(selectedPath);
+
+    useEffect(() => {
+        setLocalPath(selectedPath);
+    }, [selectedPath]);
+
+    const handlePathSwitch = (path: PathOption) => {
+        setLocalPath(path);
+        setSelectedPath(path);
+    };
 
     const Container = Platform.OS === 'web' ? View : SafeAreaView;
 
@@ -41,7 +50,7 @@ export default function SettingsScreen() {
                 <TouchableOpacity
                     style={styles.pathOption}
                     activeOpacity={0.7}
-                    onPress={() => setSelectedPath('dr_bob')}
+                    onPress={() => handlePathSwitch('dr_bob')}
                 >
                     <View style={styles.pathTextContainer}>
                         <Text style={styles.pathTitle}>Dr. Bob Mode - 2 Way Prayer</Text>
@@ -50,7 +59,7 @@ export default function SettingsScreen() {
                             called it Two Way Prayer and this is how he practiced Step 11.
                         </Text>
                     </View>
-                    {selectedPath === 'dr_bob' && (
+                    {localPath === 'dr_bob' && (
                         <Text style={styles.pathCheck}>✓</Text>
                     )}
                 </TouchableOpacity>
@@ -60,7 +69,7 @@ export default function SettingsScreen() {
                 <TouchableOpacity
                     style={styles.pathOption}
                     activeOpacity={0.7}
-                    onPress={() => setSelectedPath('big_book')}
+                    onPress={() => handlePathSwitch('big_book')}
                 >
                     <View style={styles.pathTextContainer}>
                         <Text style={styles.pathTitle}>Big Book Thumper</Text>
@@ -68,7 +77,7 @@ export default function SettingsScreen() {
                             Page 86–88. Line by line exactly like the big book.
                         </Text>
                     </View>
-                    {selectedPath === 'big_book' && (
+                    {localPath === 'big_book' && (
                         <Text style={styles.pathCheck}>✓</Text>
                     )}
                 </TouchableOpacity>
@@ -104,7 +113,7 @@ export default function SettingsScreen() {
                     <Text style={styles.menuLabel}>Reset Onboarding</Text>
                 </TouchableOpacity>
 
-                {/* App Data 2 */}
+                {/* About Section */}
                 <Text style={styles.sectionLabel}>App Data</Text>
                 <TouchableOpacity style={styles.menuRow} activeOpacity={0.7}>
                     <Text style={styles.menuIcon}>ℹ️</Text>

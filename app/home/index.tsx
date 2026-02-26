@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useAppContext } from '../../context/AppContext';
 
 type Tab = 'morning' | 'midday' | 'night';
 
@@ -51,6 +52,7 @@ function getFormattedDate(): string {
 }
 
 export default function HomeScreen() {
+    const { selectedPath } = useAppContext();
     const [activeTab, setActiveTab] = useState<Tab>('morning');
     const [menuOpen, setMenuOpen] = useState(false);
     const router = useRouter();
@@ -114,7 +116,17 @@ export default function HomeScreen() {
                     <Text style={styles.dateText}>{getFormattedDate()}</Text>
 
                     {/* Start Button */}
-                    <TouchableOpacity style={styles.startButton} activeOpacity={0.8}>
+                    <TouchableOpacity
+                        style={styles.startButton}
+                        activeOpacity={0.8}
+                        onPress={() => {
+                            if (selectedPath === 'dr_bob') {
+                                router.push('/dr-bob');
+                            } else {
+                                router.push('/big-book');
+                            }
+                        }}
+                    >
                         <Text style={styles.startText}>Start</Text>
                     </TouchableOpacity>
                 </View>

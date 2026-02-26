@@ -8,14 +8,21 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import { useRouter } from 'expo-router';
-
-type Option = 'dr_bob' | 'big_book' | null;
+import { useAppContext, PathOption } from '../../context/AppContext';
 
 export default function SelectionScreen() {
     const router = useRouter();
-    const [selected, setSelected] = useState<Option>(null);
+    const { setSelectedPath } = useAppContext();
+    const [selected, setSelected] = useState<PathOption | null>(null);
 
     const Container = Platform.OS === 'web' ? View : SafeAreaView;
+
+    const handleContinue = () => {
+        if (selected) {
+            setSelectedPath(selected);
+            router.push('/home');
+        }
+    };
 
     return (
         <Container style={styles.container}>
@@ -83,7 +90,7 @@ export default function SelectionScreen() {
                     ]}
                     activeOpacity={selected ? 0.8 : 1}
                     disabled={!selected}
-                    onPress={() => router.push('/home')}
+                    onPress={handleContinue}
                 >
                     <Text
                         style={[
