@@ -199,15 +199,14 @@ export default function MeditationScreen() {
                         </Text>
                     </TouchableOpacity>
 
-                    {!isRunning && (
-                        <TouchableOpacity
-                            style={styles.skipButton}
-                            activeOpacity={0.7}
-                            onPress={() => router.push('/home')}
-                        >
-                            <Text style={styles.skipButtonText}>Skip Timer</Text>
-                        </TouchableOpacity>
-                    )}
+                    <TouchableOpacity
+                        style={styles.skipButton}
+                        activeOpacity={0.7}
+                        onPress={() => router.push('/capture-inspiration')}
+                    >
+                        <Text style={styles.skipButtonText}>Skip Timer</Text>
+                    </TouchableOpacity>
+
                 </View>
             </ScrollView>
 

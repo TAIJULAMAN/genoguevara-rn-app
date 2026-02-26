@@ -35,6 +35,9 @@ export default function RootLayout() {
                 <Stack.Screen name="dr-bob/index" />
                 <Stack.Screen name="big-book/index" />
                 <Stack.Screen name="meditation/index" />
+                <Stack.Screen name="capture-inspiration/index" />
+                <Stack.Screen name="plan-the-day/index" />
+                <Stack.Screen name="check-guidance/index" />
             </Stack>
         </AppProvider>
     );
