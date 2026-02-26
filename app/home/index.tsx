@@ -183,8 +183,8 @@ const styles = StyleSheet.create({
         paddingTop: 16,
     },
     title: {
+        fontFamily: 'Inter_800ExtraBold',
         fontSize: 32,
-        fontWeight: '800',
         color: '#1a1a1a',
     },
     menuButton: {
@@ -231,8 +231,8 @@ const styles = StyleSheet.create({
         fontSize: 22,
     },
     dropdownLabel: {
+        fontFamily: 'Inter_500Medium',
         fontSize: 18,
-        fontWeight: '500',
         color: '#ffffff',
     },
     dropdownDivider: {
@@ -247,12 +247,13 @@ const styles = StyleSheet.create({
         paddingBottom: 40,
     },
     greeting: {
+        fontFamily: 'Inter_500Medium',
         fontSize: 22,
-        fontWeight: '500',
         color: '#2a2a2a',
         marginBottom: 6,
     },
     dateText: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 14,
         color: '#444444',
         marginBottom: 48,
@@ -271,8 +272,8 @@ const styles = StyleSheet.create({
         elevation: 8,
     },
     startText: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 20,
-        fontWeight: '700',
         color: '#1a1a1a',
     },
     tabBar: {
@@ -302,12 +303,12 @@ const styles = StyleSheet.create({
         fontSize: 22,
     },
     tabLabel: {
+        fontFamily: 'Inter_500Medium',
         fontSize: 11,
-        fontWeight: '500',
         color: '#888888',
     },
     tabLabelActive: {
+        fontFamily: 'Inter_700Bold',
         color: '#333333',
-        fontWeight: '700',
     },
 });

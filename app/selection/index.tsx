@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
         paddingTop: Platform.OS === 'web' ? 48 : 0,
     },
     header: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 22,
-        fontWeight: '700',
         color: '#ffffff',
         textAlign: 'center',
         marginTop: 48,
@@ -154,16 +154,16 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     cardTitle: {
+        fontFamily: 'Inter_800ExtraBold',
         fontSize: 17,
-        fontWeight: '800',
         color: '#ffffff',
         marginBottom: 6,
     },
     cardDescription: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 13,
         color: 'rgba(255, 255, 255, 0.85)',
         lineHeight: 20,
-        fontWeight: '400',
     },
     buttonContainer: {
         position: 'absolute',
@@ -188,8 +188,8 @@ const styles = StyleSheet.create({
         elevation: 0,
     },
     buttonText: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 17,
-        fontWeight: '700',
         color: '#1a1a1a',
         letterSpacing: 0.3,
     },

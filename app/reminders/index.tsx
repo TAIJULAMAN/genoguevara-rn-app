@@ -57,17 +57,17 @@ const styles = StyleSheet.create({
         paddingTop: 48,
     },
     title: {
+        fontFamily: 'Inter_800ExtraBold',
         fontSize: 32,
-        fontWeight: '800',
         color: '#ffffff',
         marginBottom: 24,
         letterSpacing: 0.2,
     },
     paragraph: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 15,
         color: '#ffffff',
         lineHeight: 24,
-        fontWeight: '400',
         marginBottom: 20,
     },
     buttonContainer: {
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
         elevation: 4,
     },
     buttonText: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 16,
-        fontWeight: '700',
         color: '#1a1a1a',
         letterSpacing: 0.2,
     },

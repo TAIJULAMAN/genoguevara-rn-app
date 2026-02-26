@@ -132,14 +132,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     backArrow: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 24,
         color: '#ffffff',
-        fontWeight: '300',
         marginTop: -2,
     },
     title: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 20,
-        fontWeight: '700',
         color: '#ffffff',
     },
     placeholder: {
@@ -165,18 +165,19 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     permissionTitle: {
+        fontFamily: 'Inter_600SemiBold',
         fontSize: 16,
-        fontWeight: '600',
         color: '#ffffff',
         marginBottom: 3,
     },
     permissionSubtitle: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 13,
         color: '#888888',
     },
     sectionLabel: {
+        fontFamily: 'Inter_600SemiBold',
         fontSize: 16,
-        fontWeight: '600',
         color: '#ffffff',
         marginTop: 28,
         marginBottom: 14,
@@ -199,12 +200,13 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     reminderTitle: {
+        fontFamily: 'Inter_600SemiBold',
         fontSize: 16,
-        fontWeight: '600',
         color: '#ffffff',
         marginBottom: 3,
     },
     reminderSubtitle: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 13,
         color: '#888888',
     },

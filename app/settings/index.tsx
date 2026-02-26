@@ -22,7 +22,13 @@ export default function SettingsScreen() {
         <Container style={styles.container}>
             {/* Header */}
             <View style={styles.header}>
+                <View style={styles.placeholder} />
                 <Text style={styles.title}>Settings</Text>
+                <TouchableOpacity onPress={() => router.back()} activeOpacity={0.7}>
+                    <View style={styles.checkCircle}>
+                        <Text style={styles.checkMark}>✓</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
 
             <ScrollView
@@ -69,7 +75,11 @@ export default function SettingsScreen() {
 
                 {/* Preferences */}
                 <Text style={styles.sectionLabel}>Preferences</Text>
-                <TouchableOpacity style={styles.menuRow} activeOpacity={0.7} onPress={() => router.push('/notifications')}>
+                <TouchableOpacity
+                    style={styles.menuRow}
+                    activeOpacity={0.7}
+                    onPress={() => router.push('/notifications')}
+                >
                     <Text style={styles.menuIcon}>🔔</Text>
                     <Text style={styles.menuLabel}>Notifications</Text>
                     <Text style={styles.menuChevron}>›</Text>
@@ -77,7 +87,11 @@ export default function SettingsScreen() {
 
                 {/* Content */}
                 <Text style={styles.sectionLabel}>Content</Text>
-                <TouchableOpacity style={styles.menuRow} activeOpacity={0.7}>
+                <TouchableOpacity
+                    style={styles.menuRow}
+                    activeOpacity={0.7}
+                    onPress={() => router.push('/scriptures')}
+                >
                     <Text style={styles.menuIcon}>📖</Text>
                     <Text style={styles.menuLabel}>Scriptures</Text>
                     <Text style={styles.menuChevron}>›</Text>
@@ -87,6 +101,13 @@ export default function SettingsScreen() {
                 <Text style={styles.sectionLabel}>App Data</Text>
                 <TouchableOpacity style={styles.menuRow} activeOpacity={0.7}>
                     <Text style={styles.menuIcon}>🔄</Text>
+                    <Text style={styles.menuLabel}>Reset Onboarding</Text>
+                </TouchableOpacity>
+
+                {/* App Data 2 */}
+                <Text style={styles.sectionLabel}>App Data</Text>
+                <TouchableOpacity style={styles.menuRow} activeOpacity={0.7}>
+                    <Text style={styles.menuIcon}>ℹ️</Text>
                     <Text style={styles.menuLabel}>Reset Onboarding</Text>
                 </TouchableOpacity>
 
@@ -110,7 +131,7 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         paddingHorizontal: 24,
         paddingTop: 20,
         paddingBottom: 16,
@@ -119,8 +140,8 @@ const styles = StyleSheet.create({
         width: 36,
     },
     title: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 22,
-        fontWeight: '700',
         color: '#ffffff',
     },
     checkCircle: {
@@ -132,17 +153,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     checkMark: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 18,
         color: '#ffffff',
-        fontWeight: '700',
     },
     scrollContent: {
         paddingHorizontal: 24,
         paddingBottom: 40,
     },
     sectionLabel: {
+        fontFamily: 'Inter_600SemiBold',
         fontSize: 13,
-        fontWeight: '500',
         color: '#777777',
         marginTop: 24,
         marginBottom: 10,
@@ -157,22 +178,23 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     pathTitle: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 17,
-        fontWeight: '700',
         color: '#ffffff',
         marginBottom: 4,
     },
     pathDescription: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 13,
         color: '#999999',
         lineHeight: 19,
     },
     pathCheck: {
+        fontFamily: 'Inter_600SemiBold',
         fontSize: 22,
         color: '#4A9FE5',
         marginLeft: 12,
         marginTop: 4,
-        fontWeight: '600',
     },
     divider: {
         height: 1,
@@ -192,15 +214,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     menuLabel: {
+        fontFamily: 'Inter_500Medium',
         flex: 1,
         fontSize: 16,
-        fontWeight: '500',
         color: '#ffffff',
     },
     menuChevron: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 22,
         color: '#555555',
-        fontWeight: '300',
     },
     donateContainer: {
         marginTop: 32,
@@ -213,8 +235,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     donateText: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 17,
-        fontWeight: '700',
         color: '#1a1a1a',
         letterSpacing: 0.3,
     },

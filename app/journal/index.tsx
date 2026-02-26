@@ -73,7 +73,32 @@ export default function JournalScreen() {
 
     return (
         <Container style={styles.container}>
-            <Text>Journal will be here</Text>
+            {/* Header */}
+            <View style={styles.header}>
+                <TouchableOpacity onPress={() => router.back()} activeOpacity={0.7}>
+                    <Text style={styles.backButton}>←</Text>
+                </TouchableOpacity>
+                <Text style={styles.title}>Journal</Text>
+                <View style={styles.placeholder} />
+            </View>
+
+            {/* Entries List */}
+            <FlatList
+                data={entries}
+                renderItem={renderEntry}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={styles.listContent}
+                showsVerticalScrollIndicator={false}
+                ListEmptyComponent={
+                    <View style={styles.emptyState}>
+                        <Text style={styles.emptyIcon}>📖</Text>
+                        <Text style={styles.emptyTitle}>No entries yet</Text>
+                        <Text style={styles.emptySubtitle}>
+                            Your reflections will appear here after you complete a session.
+                        </Text>
+                    </View>
+                }
+            />
         </Container>
     );
 }
@@ -93,12 +118,13 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     backButton: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 28,
         color: '#333333',
     },
     title: {
+        fontFamily: 'Inter_800ExtraBold',
         fontSize: 22,
-        fontWeight: '800',
         color: '#1a1a1a',
     },
     placeholder: {
@@ -135,16 +161,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     entryTitle: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 16,
-        fontWeight: '700',
         color: '#1a1a1a',
     },
     entryDate: {
+        fontFamily: 'Inter_500Medium',
         fontSize: 12,
         color: '#999999',
-        fontWeight: '500',
     },
     entryPreview: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 14,
         color: '#666666',
         lineHeight: 20,
@@ -159,12 +186,13 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     emptyTitle: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 18,
-        fontWeight: '700',
         color: '#333333',
         marginBottom: 8,
     },
     emptySubtitle: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 14,
         color: '#888888',
         textAlign: 'center',

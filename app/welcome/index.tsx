@@ -71,19 +71,19 @@ const styles = StyleSheet.create({
         height: 130,
     },
     title: {
+        fontFamily: 'Inter_800ExtraBold',
         fontSize: 30,
-        fontWeight: '800',
         color: '#fff',
         textAlign: 'center',
         letterSpacing: 0.4,
         marginBottom: 14,
     },
     subtitle: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 16,
         color: '#fff',
         textAlign: 'center',
         lineHeight: 24,
-        fontWeight: '400',
         marginBottom: 40,
     },
     taglineContainer: {
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
         gap: 4,
     },
     tagline: {
+        fontFamily: 'Inter_400Regular',
         fontSize: 13,
         color: 'rgba(255,255,255,0.82)',
         textAlign: 'center',
@@ -115,8 +116,8 @@ const styles = StyleSheet.create({
         elevation: 4,
     },
     buttonText: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 17,
-        fontWeight: '700',
         color: '#1a1a1a',
         letterSpacing: 0.3,
     },
