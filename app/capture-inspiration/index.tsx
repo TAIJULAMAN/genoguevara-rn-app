@@ -38,7 +38,7 @@ export default function CaptureInspirationScreen() {
 
     const handleContinue = () => {
         if (selectedOption === 'app') {
-            router.push('/journal');
+            router.push('/write-in-app');
         } else {
             router.push('/plan-the-day');
         }

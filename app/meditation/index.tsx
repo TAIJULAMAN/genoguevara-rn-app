@@ -59,7 +59,6 @@ export default function MeditationScreen() {
     const handleTimerComplete = async () => {
         setIsRunning(false);
         await stopSession();
-        // Option: play a "ding" here
     };
 
     async function playAudio() {

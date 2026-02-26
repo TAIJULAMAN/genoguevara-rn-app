@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
     Platform,
     ScrollView,
@@ -10,30 +9,9 @@ import {
 import { SafeAreaView } from 'react-native';
 import { useRouter } from 'expo-router';
 
-export default function CheckGuidanceScreen() {
+export default function ObeyAndActScreen() {
     const router = useRouter();
-    const [selections, setSelections] = useState({
-        selfish: false,
-        dishonest: false,
-        fearDriven: false,
-        selfCentered: false,
-    });
-
     const Container = Platform.OS === 'web' ? View : SafeAreaView;
-
-    const toggleSelection = (key: keyof typeof selections) => {
-        setSelections(prev => ({
-            ...prev,
-            [key]: !prev[key]
-        }));
-    };
-
-    const checkItems = [
-        { id: 'selfish', label: 'Is this selfish?' },
-        { id: 'dishonest', label: 'Is this dishonest?' },
-        { id: 'fearDriven', label: 'Is this fear-driven?' },
-        { id: 'selfCentered', label: 'Is this self-centered?' },
-    ];
 
     return (
         <Container style={styles.container}>
@@ -46,7 +24,7 @@ export default function CheckGuidanceScreen() {
                 >
                     <Text style={styles.backArrow}>‹</Text>
                 </TouchableOpacity>
-                <Text style={styles.headerTitle}>Check guidance</Text>
+                <Text style={styles.headerTitle}>Obey + Act</Text>
                 <View style={styles.placeholder} />
             </View>
 
@@ -58,7 +36,7 @@ export default function CheckGuidanceScreen() {
                 {/* Sub-header with yellow bar */}
                 <View style={styles.subHeaderSection}>
                     <Text style={styles.subHeaderTitle}>
-                        Trust but test
+                        Thy Will, Not Mine, Be Done
                     </Text>
                     <View style={styles.yellowBar} />
                 </View>
@@ -66,46 +44,34 @@ export default function CheckGuidanceScreen() {
                 {/* Quote Card */}
                 <View style={styles.quoteCard}>
                     <Text style={styles.quoteText}>
-                        “I was to test my thinking by the new God-consciousness within...”
+                        “We usually conclude the period of meditation with a prayer...”
                     </Text>
                 </View>
 
-                {/* Instructions */}
-                <View style={styles.instructionsSection}>
-                    <Text style={styles.instructionsLabel}>INSTRUCTIONS:</Text>
-                    <Text style={styles.instructionsText}>
-                        Not every thought is from God. Run it through the spiritual test.
+                {/* Main Prayer Block */}
+                <View style={styles.prayerBlock}>
+                    <Text style={styles.prayerText}>
+                        God, please show me throughout this day what my next step is to be.
+                    </Text>
+                    <Text style={[styles.prayerText, { marginTop: 32 }]}>
+                        Give me whatever I need to take care of any problems.
+                    </Text>
+                    <Text style={[styles.prayerText, { marginTop: 32 }]}>
+                        Free me from self-will, fear, or self-pity.
+                    </Text>
+                    <Text style={[styles.prayerText, { marginTop: 32 }]}>
+                        Help me to do Thy will always. Amen.
                     </Text>
                 </View>
 
-                {/* Check List */}
-                <View style={styles.checkListSection}>
-                    {checkItems.map((item) => (
-                        <TouchableOpacity
-                            key={item.id}
-                            style={styles.checkRow}
-                            onPress={() => toggleSelection(item.id as keyof typeof selections)}
-                            activeOpacity={0.7}
-                        >
-                            <Text style={styles.checkLabel}>{item.label}</Text>
-                            <Text style={[
-                                styles.selectText,
-                                selections[item.id as keyof typeof selections] && styles.selectedText
-                            ]}>
-                                {selections[item.id as keyof typeof selections] ? 'Selected' : 'Select'}
-                            </Text>
-                        </TouchableOpacity>
-                    ))}
-                </View>
-
-                {/* Continue Button */}
+                {/* Finish Button */}
                 <View style={styles.buttonPadding}>
                     <TouchableOpacity
-                        style={styles.continueButton}
-                        onPress={() => router.push('/obey-and-act')}
+                        style={styles.finishButton}
+                        onPress={() => router.push('/finish')}
                         activeOpacity={0.8}
                     >
-                        <Text style={styles.continueButtonText}>Continue</Text>
+                        <Text style={styles.finishButtonText}>Continue</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -177,67 +143,38 @@ const styles = StyleSheet.create({
         backgroundColor: '#2c2514',
         marginHorizontal: 24,
         borderRadius: 16,
-        padding: 30,
-        marginBottom: 40,
+        padding: 24,
+        marginBottom: 32,
     },
     quoteText: {
         fontFamily: 'Inter_400Regular',
-        fontSize: 18,
+        fontSize: 16,
         color: '#d1b88a',
         textAlign: 'center',
-        lineHeight: 28,
+        lineHeight: 26,
     },
-    instructionsSection: {
-        paddingHorizontal: 24,
-        marginBottom: 40,
+    prayerBlock: {
+        backgroundColor: '#2c2514',
+        padding: 32,
+        marginBottom: 48,
+        minHeight: 400,
     },
-    instructionsLabel: {
-        fontFamily: 'Inter_700Bold',
-        fontSize: 12,
-        color: '#666666',
-        letterSpacing: 1.2,
-        marginBottom: 12,
-    },
-    instructionsText: {
+    prayerText: {
         fontFamily: 'Inter_400Regular',
-        fontSize: 16,
-        color: '#888888',
-        lineHeight: 24,
-    },
-    checkListSection: {
-        paddingHorizontal: 24,
-        gap: 32,
-        marginBottom: 60,
-    },
-    checkRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    checkLabel: {
-        fontFamily: 'Inter_400Regular',
-        fontSize: 18,
+        fontSize: 24,
         color: '#ffffff',
-    },
-    selectText: {
-        fontFamily: 'Inter_400Regular',
-        fontSize: 16,
-        color: '#444444',
-    },
-    selectedText: {
-        color: '#FFD54F',
-        fontFamily: 'Inter_700Bold',
+        lineHeight: 36,
     },
     buttonPadding: {
         paddingHorizontal: 24,
     },
-    continueButton: {
+    finishButton: {
         backgroundColor: '#FFD54F',
         paddingVertical: 18,
         borderRadius: 30,
         alignItems: 'center',
     },
-    continueButtonText: {
+    finishButtonText: {
         fontFamily: 'Inter_700Bold',
         fontSize: 18,
         color: '#000000',

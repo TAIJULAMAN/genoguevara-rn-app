@@ -38,6 +38,9 @@ export default function RootLayout() {
                 <Stack.Screen name="capture-inspiration/index" />
                 <Stack.Screen name="plan-the-day/index" />
                 <Stack.Screen name="check-guidance/index" />
+                <Stack.Screen name="obey-and-act/index" />
+                <Stack.Screen name="finish/index" />
+                <Stack.Screen name="write-in-app/index" />
             </Stack>
         </AppProvider>
     );
