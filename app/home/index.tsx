@@ -136,10 +136,25 @@ export default function HomeScreen() {
                         style={styles.startOuterCircle}
                         activeOpacity={0.8}
                         onPress={() => {
-                            if (selectedPath === 'dr_bob') {
-                                router.push('/morning/dr-bob');
+                            if (activeTab === 'morning') {
+                                if (selectedPath === 'dr_bob') {
+                                    router.push('/morning/dr-bob');
+                                } else {
+                                    router.push('/morning/big-book');
+                                }
+                            } else if (activeTab === 'midday') {
+                                if (selectedPath === 'dr_bob') {
+                                    router.push('/midday/dr-bob');
+                                } else {
+                                    router.push('/midday/big-book');
+                                }
                             } else {
-                                router.push('/morning/big-book');
+                                // night - placeholder for future
+                                if (selectedPath === 'dr_bob') {
+                                    router.push('/night/dr-bob');
+                                } else {
+                                    router.push('/night/big-book');
+                                }
                             }
                         }}
                     >
